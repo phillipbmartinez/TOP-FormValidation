@@ -4,6 +4,7 @@ const emailInput = document.getElementById("emailInput");
 const countryInput = document.getElementById("countryInput");
 const zipInput = document.getElementById("zipInput");
 const passwordInput = document.getElementById("passwordInput");
+const stateInput = document.getElementById("stateInput");
 const submitButton = document.getElementById("submitButton");
 const clearButton = document.getElementById("clearButton");
 const emailError = document.querySelector("#mail + span.error");
@@ -13,19 +14,22 @@ const countryMessage = document.createElement("div");
 const zipMessage = document.createElement("div");
 const passwordMessage = document.createElement("div");
 const loginMessage = document.createElement("div");
+const stateMessage = document.createElement("div");
 
-formContainer.append(emailMessage, countryMessage, zipMessage, passwordMessage, loginMessage);
+formContainer.append(emailMessage, countryMessage, stateMessage, zipMessage, passwordMessage, loginMessage);
 
 function clearForm() {
     emailInput.value = "";
     countryInput.value = "";
+    stateInput.value = "";
     zipInput.value = "";
     passwordInput.value = "";
-    // loginMessage.textContent = "";
+    loginMessage.textContent = "";
     emailMessage.textContent = "";
     countryMessage.textContent = "";
     zipMessage.textContent = "";
     passwordMessage.textContent = "";
+    stateMessage.textContent = "";
 }
 
 function submitForm(event) {
@@ -39,6 +43,11 @@ function submitForm(event) {
 
     if (!countryInput.validity.valid) {
         showCountryError();
+        valid = false;
+    }
+
+    if (!stateInput.validity.valid) {
+        showStateError();
         valid = false;
     }
 
@@ -58,9 +67,8 @@ function submitForm(event) {
         clearForm();
     } else {
         loginMessage.classList.add("error");
-        loginMessage.textContent = "Please check all input fields.";
+        loginMessage.textContent = "Please check all input fields for accuracy and completeness.";
     }
-
 }
 
 emailInput.addEventListener("input", () => {
@@ -76,7 +84,14 @@ countryInput.addEventListener("input", () => {
         countryMessage.textContent = "";
     } else {
         showCountryError();
-        console.log(countryInput.value);
+    }
+});
+
+stateInput.addEventListener("input", () => {
+    if (stateInput.validity.valid) {
+        stateMessage.textContent = "";
+    } else {
+        showStateError();
     }
 });
 
@@ -122,25 +137,37 @@ function showCountryError() {
     } else if (countryInput.validity.tooShort) {
         countryMessage.classList.add("error");
         countryMessage.textContent = `Country should be at least ${countryInput.minLength} characters; you entered ${countryInput.value.length}.`;
-    } else {
-        console.log(countryInput.value.length);
-        countryMessage.textContent = ""
+    }
+}
+
+function showStateError() {
+    if (stateInput.validity.valueMissing) {
+        stateMessage.classList.add("error");
+        stateMessage.textContent = "Please enter a state name.";
+    } else if (stateInput.validity.typeMismatch) {
+        stateMessage.classList.add("error");
+        stateMessage.textContent = "State is a text field";
+    } else if (stateInput.validity.tooShort) {
+        stateMessage.classList.add("error");
+        stateMessage.textContent = `State should be at least ${stateInput.minLength} characters; you entered ${stateInput.value.length}.`;
     }
 }
 
 function showZipError() {
-    if (zipInput.validity.valueMissing) {
+    const value = zipInput.value.trim();
+    const valueLength = value.length;
+
+    if (value === "") {
         zipMessage.classList.add("error");
         zipMessage.textContent = "Please enter a zip code.";
-    } else if (zipInput.validity.typeMismatch) {
+    } else if (valueLength < 5) {
         zipMessage.classList.add("error");
-        zipMessage.textContent = "Zip code is a number field";
-    } else if (zipInput.validity.tooShort) {
+        zipMessage.textContent = `Zipcode can't be less than 5 numbers; you entered ${valueLength}.`;
+    } else if (valueLength > 10) {
         zipMessage.classList.add("error");
-        zipMessage.textContent = `Zipcode should be at least ${zipInput.minLength} numbers; you entered ${zipInput.value.length}.`;
+        zipMessage.textContent = `Zipcode can't be more than 10 numbers; you entered ${valueLength}.`;
     } else {
-        console.log(zipInput.value.length);
-        zipMessage.textContent = ""
+        zipMessage.textContent = "";
     }
 }
 
@@ -154,9 +181,6 @@ function showPasswordError() {
     } else if (passwordInput.validity.tooShort) {
         passwordMessage.classList.add("error");
         passwordMessage.textContent = `Password should be at least ${passwordInput.minLength} characters; you entered ${passwordInput.value.length}.`;
-    } else {
-        console.log(passwordInput.value.length);
-        passwordMessage.textContent = ""
     }
 }
 

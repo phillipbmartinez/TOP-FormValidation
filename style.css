@@ -24,12 +24,13 @@ body {
     height: 50%;
     width: 50%;
     max-width: 600px;
+    min-width: 350px;
 }
 
 #form {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(4, auto);
+    grid-template-rows: repeat(5, auto);
     gap: 10px;
 }
 
@@ -53,6 +54,7 @@ label {
 
 #emailContainer,
 #countryContainer,
+#stateContainer,
 #zipContainer,
 #passwordContainer {
     grid-column: 1 / -1;
@@ -66,6 +68,7 @@ label {
 
 #emailInput,
 #countryInput,
+#stateInput,
 #zipInput,
 #passwordInput {
     grid-column: 2;
@@ -74,6 +77,7 @@ label {
 
 #emaillabel,
 #countryLabel,
+#stateLabel,
 #zipLabel,
 #passwordLabel {
     grid-column: 1;
