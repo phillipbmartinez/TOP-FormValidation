@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Validation</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div id="formContainer">
-        <form id="form">
+        <form id="form" novalidate>
             <div id="emailContainer">
                 <label for="emailInput" id="emaillabel">Email: </label>
-                <input id="emailInput" type="email"  placeholder="pm@gmail.com" required>
+                <input id="emailInput" type="email" placeholder="pm@gmail.com" minlength="12" required>
             </div>
             <div id="countryContainer">
                 <label for="countryInput" id="countryLabel">Country: </label>
@@ -27,11 +29,12 @@
             </div>
         </form>
         <div id="buttonContainer">
-            <button class="button" id="submitButton">Submit</button>
-            <button class="button" id="clearButton">Clear Form</button>
+            <button type="submit" class="button" id="submitButton">Submit</button>
+            <button type="button" class="button" id="clearButton">Clear Form</button>
         </div>
     </div>
 
     <script src="script.js"></script>
 </body>
+
 </html>

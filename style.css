@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
     height: 100%;
 }
 
@@ -32,9 +33,10 @@ body {
     gap: 10px;
 }
 
-input{
+input {
     margin: 0;
-    padding: 8px; /* Added padding for better appearance */
+    padding: 8px;
+    /* Added padding for better appearance */
     box-sizing: border-box;
     border-radius: 10px;
     border: none;
@@ -43,30 +45,48 @@ input{
 label {
     margin-left: 50px;
     display: flex;
-    align-items: center; /* Center aligns text with input */
+    align-items: center;
+    /* Center aligns text with input */
     text-align: right;
     font-weight: bold;
 }
 
-#emailContainer, #countryContainer, #zipContainer, #passwordContainer {
-    grid-column: 1 / -1; /* Full width for each container */
+#emailContainer,
+#countryContainer,
+#zipContainer,
+#passwordContainer {
+    grid-column: 1 / -1;
+    /* Full width for each container */
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
-    gap: 10px; /* Gap between label and input */
+    gap: 10px;
+    /* Gap between label and input */
 }
 
-#emailInput, #countryInput, #zipInput, #passwordInput {
-    grid-column: 2; /* Align input fields to the second column */
+#emailInput,
+#countryInput,
+#zipInput,
+#passwordInput {
+    grid-column: 2;
+    /* Align input fields to the second column */
 }
 
-#emaillabel, #countryLabel, #zipLabel, #passwordLabel {
-    grid-column: 1; /* Align labels to the first column */
+#emaillabel,
+#countryLabel,
+#zipLabel,
+#passwordLabel {
+    grid-column: 1;
+    /* Align labels to the first column */
 }
 
 input:invalid {
-    border: 1px solid red;
-}
+    box-shadow: 0 0 5px 1px red;
+  }
+  
+  input:focus:invalid {
+    box-shadow: none;
+  }
 
 #buttonContainer {
     margin-top: 20px;
@@ -87,4 +107,18 @@ input:invalid {
 .button:hover {
     cursor: pointer;
     background-color: aqua;
+}
+
+.valid {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 1.25rem;
+    color: black;
+}
+
+.error {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 1.25rem;
+    color: red;
 }
