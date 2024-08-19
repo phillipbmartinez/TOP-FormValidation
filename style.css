@@ -45,6 +45,7 @@ label {
     display: flex;
     align-items: center; /* Center aligns text with input */
     text-align: right;
+    font-weight: bold;
 }
 
 #emailContainer, #countryContainer, #zipContainer, #passwordContainer {
@@ -61,4 +62,29 @@ label {
 
 #emaillabel, #countryLabel, #zipLabel, #passwordLabel {
     grid-column: 1; /* Align labels to the first column */
+}
+
+input:invalid {
+    border: 1px solid red;
+}
+
+#buttonContainer {
+    margin-top: 20px;
+}
+
+.button {
+    border-radius: 10px;
+    border: none;
+    padding: 5px 15px;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+#clearButton {
+    margin-left: 10px;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: aqua;
 }
