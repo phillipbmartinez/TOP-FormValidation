@@ -13,15 +13,15 @@
         <form id="form" novalidate>
             <div id="emailContainer">
                 <label for="emailInput" id="emaillabel">Email: </label>
-                <input id="emailInput" type="email" placeholder="pm@gmail.com" minlength="12" required>
+                <input id="emailInput" type="email" placeholder="pm@gmail.com" required minlength="12">
             </div>
             <div id="countryContainer">
                 <label for="countryInput" id="countryLabel">Country: </label>
-                <input id="countryInput" type="text" required>
+                <input id="countryInput" type="text" minlength="3" required>
             </div>
             <div id="zipContainer">
                 <label for="zipInput" id="zipLabel">Zip Code: </label>
-                <input id="zipInput" type="number" required>
+                <input id="zipInput" type="number" minlength="5" maxlength="10" required>
             </div>
             <div id="passwordContainer">
                 <label for="passwordInput" id="passwordLabel">Password: </label>
